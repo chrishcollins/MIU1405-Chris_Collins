@@ -1,0 +1,81 @@
+//Master View function
+function MasterView() {
+	var aboutMe = Ti.UI.createView({
+		backgroundColor:'transparent'
+	});
+
+	//JSON Data
+	var tableData = [
+		{title:'Favorite Food', 
+			info:'Definitely my favorite food is Mexican and Italian!', 
+			hasChild:true, 
+			color: '#000'},
+			
+		{title:'Favorite Color', 
+		info:'Blue', 
+		hasChild:true, 
+		color: '#000'},
+		
+		{title:'Sports', 
+		info:'I enjoy a ton of sports.  I like basketball, baseball, skateboarding, zip-lining, football, soccer, golf, and hopefully soon I will be able to go skydiving. However, I am not like your typical guy when it comes to sports. The only sports that I enjoy watching is anything my kids play, North Carolina Tarheels Basketball, and Cincinnati Reds baseball.', 
+		hasChild:true, 
+		color: '#000'},
+		
+		{title:'My Family', 
+		info:'I am married to my beautiful wife Christi and I have three beautiful kids; Hope, Andrew, and Macie.', 
+		hasChild:true, 
+		color: '#000'},
+		
+		{title:'Work Background', 
+		info:'I have been a Product Designer for the past 12 years.  I worked for Tempur-Pedic for 11 years and was the only designer creating pillows for the US.  Since then I have been working wherever I can to make ends meet.  I am hoping to start a mobile web/app development business soon.', 
+		hasChild:true,
+		color: '#000'},
+		
+		{title:'Pets', 
+		info:'We have a dog for almost a year now. Her name is Coco and she is a black & white Havanese.', 
+		hasChild:true, 
+		color: '#000'},
+		
+		{title:'Hobbies', 
+		info:'I have several hobbies.  My main interests are taking family trips, playing bass guitar, and being a part-time photographer.', 
+		hasChild:true, 
+		color: '#000'},
+		
+		{title:'Movies', 
+		info:'It is difficult to say which movie is my favorite, so I will list a few that I enjoy watching.  Indiana Jones movies, Back to the Future, Tombstone, any of the super-hero type movies, Fast & the Furious movies, and The Passion of the Christ.', 
+		hasChild:true, 
+		color: '#000'},
+		
+		{title:'Music', 
+		info:'I enjoy music so much.  I relate almost everything to music and I am always listening to something on my iPhone.  Here is a list of several bands that I like.  Red, Lecrae, P.O.D., Flyleaf, Tedashii, 7th Time Down, Disciple, Ambassador, Family Force 5, Propaganda, Skillet, & Pillar.', 
+		hasChild:true, 
+		color: '#000'},
+		
+		{title:'Book', 
+		info:'I do not have time to read like I want to, but when I have time I am usually reading my Bible.  It is sad but most of what I read is online articles.', 
+		hasChild:true, 
+		color: '#000'},
+		
+		{title:'Vacation', 
+		info:'My family and I love to go to Charleston, SC.  We travel there as many times during the year as possible.  We also like to visit Cincinnati, Ohio and try to catch a Reds game or go to Kings Island.  We also love to travel to Florida, but sadly we have not been able to lately.', 
+		hasChild:true, 
+		color: '#000'}
+	];
+
+	var table = Ti.UI.createTableView({
+		data:tableData
+	});
+	aboutMe.add(table);
+
+	//Click event listener
+	table.addEventListener('click', function(e) {
+		aboutMe.fireEvent('itemSelected', {
+			name:e.rowData.title,
+			info:e.rowData.info
+		});
+	});
+
+	return aboutMe;
+};
+
+module.exports = MasterView;

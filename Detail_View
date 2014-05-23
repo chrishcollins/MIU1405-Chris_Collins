@@ -1,0 +1,31 @@
+//About me info view & background image
+function DetailView() {
+	var aboutMe = Ti.UI.createView({
+		backgroundImage: 'Images/preview.jpg'
+	});
+//Background container and text for Info from JSON data.
+	var label = Ti.UI.createLabel({
+		text:'Please select an item',
+		left: 10,
+		right: 10,
+		height:'auto',
+		//width:'auto',
+		font: {fontSize: 20, fontFamily: "Helvetica", fontWeight: "light"},
+		color: "white",
+		backgroundGradient: {
+        type: 'linear',
+        startPoint: { x: '50%', y: '0%' },
+        endPoint: { x: '50%', y: '100%' },
+        colors: [ { color: '#000000', offset: 0.0}, { color: '#4d4d4d', offset: 1.0 }]
+	}
+	});
+	aboutMe.add(label);
+
+	aboutMe.addEventListener('itemSelected', function(e) {
+		label.text = e.name + ":  " + e.info;
+	});
+
+	return aboutMe;
+};
+
+module.exports = DetailView;
